@@ -11,21 +11,37 @@ class App extends Component {
     }
   }
 
+  // render() {
+  //   return (
+  //     <div className="App">
+  //       <h1>
+  //         <ul>
+  //           <li>{this.state.array[0]}</li>
+  //           <li>{this.state.array[1]}</li>
+  //           <li>{this.state.array[2]}</li>
+  //           <li>{this.state.array[3]}</li>
+  //           <li>{this.state.array[4]}</li>
+  //         </ul>
+  //       </h1>
+  //     </div>
+  //   );
+  // }
+
+
   render() {
+    let foods = this.state.array.map((element, index) => {
+      return (
+        <h1 key={index}>{element}</h1>
+      )
+    })
+
     return (
       <div className="App">
-        <h1>
-          <ul>
-            <li>{this.state.array[0]}</li>
-            <li>{this.state.array[1]}</li>
-            <li>{this.state.array[2]}</li>
-            <li>{this.state.array[3]}</li>
-            <li>{this.state.array[4]}</li>
-          </ul>
-        </h1>
+        {foods}
       </div>
     );
   }
 }
+
 
 export default App;
