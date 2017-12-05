@@ -3,16 +3,38 @@ import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      array: ['spaghetti ', 'ice cream ', 'sushi ', 'bologna ', 'cheese '],
+      text: '',
+    }
+    this.add = this.add.bind(this)
+  }
+
+  add(val) {
+    
+    this.setState({
+      text: val
+    })
+  }
+
   render() {
+
+    //filter through array and THEN populate the input
+    //.startsWith
+
+    let foods = this.state.array.filter(word => word.includes(this.state.text)).map((element, index) => {
+      return (
+        <h1 key={index}>{element}</h1>
+      )
+    })
+
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <input onChange={(event) => this.add(event.target.value)} />
+        {foods}
       </div>
     );
   }
